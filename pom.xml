@@ -36,6 +36,8 @@
         <module>springboot-quartz</module>
         <module>springboot-jdbc</module>
         <module>springboot-jpa</module>
+        <module>jmeter</module>
+        <module>socket-receive</module>
     </modules>
 
     <parent>

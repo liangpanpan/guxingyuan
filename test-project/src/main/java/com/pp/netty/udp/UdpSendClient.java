@@ -20,9 +20,12 @@ public class UdpSendClient {
 
         DatagramSocket socket = new DatagramSocket();
         try {
-            InetSocketAddress address = new InetSocketAddress("localhost", 8088);
 
-            byte[] requestData = "Hello".getBytes(StandardCharsets.UTF_8);
+            String message = "2022-03-10 15:40:39 bigip1.com to 192.168.10.222#21919: [NOERROR qr,aa,rd,ra] response: app.example.choerodon.io. 60 IN A 192.168.30.136;";
+
+            InetSocketAddress address = new InetSocketAddress("localhost", 9090);
+
+            byte[] requestData = message.getBytes(StandardCharsets.UTF_8);
 
             socket.setSoTimeout(1000);
             DatagramPacket packet = new DatagramPacket(requestData, requestData.length, address);

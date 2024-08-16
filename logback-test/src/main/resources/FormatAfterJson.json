@@ -1,0 +1,97 @@
+{
+  "alarm_count": 0,
+  "attack": [],
+  "attack_chain": "",
+  "attack_src_ip": "",
+  "auth_method": "",
+  "cve": [],
+  "danger_level": -1,
+  "discript": [
+    "近期，国外研究人员披露了一起巴基斯坦新威胁组织针对印度国防机构的移动端攻击活动，并指出活动有效负载疑似由SpyNote Android远程管理工具或名为Craxs Rat的修改版本生成。基于以上信息，360经关联分析后，挖掘到了25个相关样本，并发现样本均属于SpyNote家族，且使用了NPManager工具进行混淆。不过，目前暂未有足够证据将此活动归属于已知的APT组织。\n经过对25个强关联样本的进一步分析，研究人员发现了15台受感染的移动设备，这些设备感染时间集中在2022年12月-2023年4月，均位于印度，且其中存在3台高价值设备。攻击者疑似利用社会工程学手段发现目标社交账号，然后通过WhatsApp进行聊天后向目标直接发送伪装了名称的恶意APK文件。据悉，样本伪装对象均是文档、相册、通讯录相关，且部分样本的文件名也极具针对性。样本的修改时间最早是2022年10月15日，因此攻击时间可追溯到2022年。值得注意的是，样本近期开始使用公开的NPManager工具进行代码混淆，且使用这个工具的样本最早的混淆日期是2023年10月16日，可见攻击者正在测试躲避安全软件的查杀。此外，研究人员通过样本溯源发现了和APT-C-56(透明部落)组织相关的线索。如：1)某些样本所在的设备上存在透明部落组织的样本；2)攻击活动大量使用开源软件，且攻击目标也和APT-C-56组织有相似之处。研究人员表示，尽管这些并不能证明该起事件和透明部落组织有关系，但是也提供了一种归属的可能性。"
+  ],
+  "email_desc": "",
+  "email_from": "",
+  "email_subject": "",
+  "end_time": "",
+  "exploit_vulnerability": "",
+  "file_md5": "",
+  "harm": "",
+  "impact_assets": "",
+  "indicator_count": 37,
+  "industry_count": 1,
+  "industrys": [
+    {
+      "name": "军队",
+      "id": "59"
+    }
+  ],
+  "inte_result": "",
+  "methods": [
+    {
+      "code": "社会工程学",
+      "name": "社会工程学",
+      "id": ""
+    },
+    {
+      "code": "钓鱼攻击",
+      "name": "钓鱼攻击",
+      "id": ""
+    }
+  ],
+  "occur_end_time": "",
+  "occur_start_time": "",
+  "operator": "",
+  "organs": [],
+  "original_source": "",
+  "path_url": "",
+  "poc": "",
+  "poc_pulibc_time": "",
+  "poc_relate_url": "",
+  "pub_source": "天际友盟",
+  "pub_time": "2024-08-15 11:33",
+  "public_time": "",
+  "refInfo": {
+    "urls": [
+      "https://mp.weixin.qq.com/s/4btHaJT63LqLCz4q6ZvVMw"
+    ],
+    "message": ""
+  },
+  "relate_account": [],
+  "relate_url_ip": {
+    "type": 0,
+    "content": ""
+  },
+  "response": {
+    "type": "防范",
+    "content": [
+      "(1)使用网络安全设备或组件阻断相关指示器；(2)谨防钓鱼攻击，切勿打开未知来源的邮件及附件，使用流量审查工具及时发现异常流量；(3)使用反恶意软件程序或其他安全策略来阻止恶意有效负载启动。"
+    ]
+  },
+  "score": 80.0,
+  "targets": [],
+  "threat_subject": {
+    "type": 1,
+    "content": {
+      "des": "",
+      "subject": []
+    }
+  },
+  "threats": [
+    {
+      "name": "恶意软件",
+      "id": "25"
+    }
+  ],
+  "title": "印度国防机构遭到巴基斯坦新威胁组织持续攻击",
+  "tlp": 2,
+  "tools": [
+    {
+      "name": "SpyNote",
+      "id": "SpyNote"
+    }
+  ],
+  "udp_source": "",
+  "udp_time": "",
+  "updatelog": [],
+  "used_method": ""
+}

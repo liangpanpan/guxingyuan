@@ -14,5 +14,6 @@ public class PlatFormLoggerTest {
         PlatformLogger platformLogger = PlatformLogger.getLogger(PlatFormLoggerTest.class);
         platformLogger.info("Hello");
         platformLogger.info("123");
+        platformLogger.info("123:{}, {}", "aaa", "bbb");
     }
 }

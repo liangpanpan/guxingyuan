@@ -50,4 +50,15 @@ public class PlatformLogger {
     }
 
 
+    public void info(String format, Object... objects) {
+        if (this.logger instanceof LocationAwareLogger) {
+            ((LocationAwareLogger) this.logger).log(null, FQCN, LocationAwareLogger.INFO_INT, format,
+                    objects, null);
+            return;
+        }
+
+        this.logger.info(format, objects);
+    }
+
+
 }

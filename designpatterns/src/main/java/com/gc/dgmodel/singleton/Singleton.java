@@ -1,6 +1,7 @@
 package com.gc.dgmodel.singleton;
 
 /**
+ * 饿汉模式
  * @Title
  * @Description
  * @Author ppliang

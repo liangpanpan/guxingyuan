@@ -24,8 +24,8 @@ public class UdpSend {
             byte[] sendData = message.getBytes();
 
             // 指定服务器地址和端口
-            String serviceIp = "10.1.1.90";
-            int serverPort = 8888;
+            String serviceIp = "192.168.30.249";
+            int serverPort = 10514;
             InetAddress serverAddress = InetAddress.getByName(serviceIp);
 
 

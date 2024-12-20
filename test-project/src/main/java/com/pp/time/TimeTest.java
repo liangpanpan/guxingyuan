@@ -61,4 +61,14 @@ public class TimeTest {
         System.out.println("相差：" + day);
     }
 
+
+    @Test
+    public void testPrintTimeFromLong() {
+        long timeLong = 1732069822690L;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        Date time = new Date(timeLong);
+        System.out.println(sdf.format(time));
+    }
+
+
 }

@@ -18,4 +18,10 @@ public class StaticTest {
         System.out.println("StaticTest init");
         NAME = "111";
     }
+
+    public String getName() {
+        return NAME;
+    }
+
+
 }

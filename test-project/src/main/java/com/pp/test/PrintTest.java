@@ -10,9 +10,12 @@ package com.pp.test;
  */
 public class PrintTest {
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
-//        Class<?> aClass = Class.forName("com.pp.test.StaticTest");
+        Class<?> aClass = Class.forName("com.pp.test.StaticTest");
+        Object o = aClass.newInstance();
+        StaticTest test = (StaticTest) o;
+        System.out.println(test.getName());
 
         System.out.println(StaticTest.A);
         System.out.println("111222333");

@@ -16,7 +16,7 @@ public class ThreadLocalCounter {
     private ThreadLocal<Number> num = new ThreadLocal<Number>() {
         @Override
         protected Number initialValue() {
-            return super.initialValue();
+            return new Number();
         }
     };
 
@@ -25,7 +25,7 @@ public class ThreadLocalCounter {
 
         Number n = num.get();
 
-        System.out.println("test1");
+//        System.out.println("test1");
 
         n.add();
 

@@ -1,0 +1,62 @@
+server:
+  port: 8088
+
+spring:
+  servlet:
+    multipart:
+      # 根据实际需求作调整
+      # 默认最大上传文件大小为1M，单个文件大小
+      max-file-size: -1
+      # 默认最大请求大小为10M，总上传的数据大小
+      max-request-size: -1
+      enabled: true
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 配置数据源类型
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://140.143.119.132:3306/guxingyuan?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: lpp@123456
+    # 初始化，最小，最大连接数
+    initialSize: 5
+    minIdle: 5
+    maxActive: 25
+    # 获取数据库连接等待的超时时间
+    maxWait: 60000
+    # 配置多久进行一次检测，检测需要关闭的空闲连接 单位毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1 FROM dual
+
+  mvc:
+    servlet:
+      load-on-startup: 1
+    converters:
+      preferred-json-mapper: gson
+
+mybatis:
+  type-aliases-package: com.guxingyuan.mybatis.entity
+  mapper-locations: classpath:mappers/**.xml
+  check-config-location: true
+  configuration:
+    # 开启驼峰命名
+    map-underscore-to-camel-case: true
+    # 输出到控制台
+    #      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+    # 使用slf4j日志插件
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+
+# page helper
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+logging:
+#  config: classpath:logback-${spring.profiles.active}-spring.xml
+  level:
+    com.guxingyuan.mybatis.mapper: debug
+    root: info

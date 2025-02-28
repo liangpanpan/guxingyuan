@@ -39,6 +39,7 @@
         <module>jmeter</module>
         <module>socket-receive</module>
         <module>command-test</module>
+        <module>springboot-mybatis</module>
     </modules>
 
     <parent>

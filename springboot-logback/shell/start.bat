@@ -1,0 +1,1 @@
+java -jar -Dspring.config.location=./config/application.yml -Dlogging.config=./config/logback.xml springboot-logback.jar

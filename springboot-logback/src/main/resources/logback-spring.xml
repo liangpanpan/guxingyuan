@@ -20,15 +20,38 @@
         </encoder>
     </appender>
 
+    <!--
+        处理方式。
+        　　DENY：日志将立即被抛弃不再经过其他过滤器；
+        　　NEUTRAL：有序列表里的下个过滤器过接着处理日志；
+                    （该级别既不处理，也不抛弃，相当于没有任何处理，日志会被保存下来并在本appender被执行）
+        　　ACCEPT：日志会被立即处理，不再经过剩余过滤器。
+
+        1) ch.qos.logback.classic.filter.LevelFilter    级别过滤器，对特定某个级别的日志进行过滤。
+            level：日志级别。
+            onMatch：对符合过滤级别的日志的操作，这里仅仅包括指定级别。（DENY，NEUTRAL，ACCEPT）
+            onMismatch：对不符合过滤级别的日志的操作，这里仅仅包括指定级别。（DENY，NEUTRAL，ACCEPT）
+
+        2) ch.qos.logback.classic.filter.ThresholdFilter    临界值过滤器，过滤掉低于指定临界值的日志。
+            它没有过多的参数，只有默认配置。当日志级别等于或高于临界值时，过滤器返回NEUTRAL；当日志级别低于临界值时，日志返回DENY。
+
+    -->
     <!-- 按照每天生成日志文件 -->
     <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件名 -->
+        <file>${LOG_HOME}/info.log</file>
         <!-- 控制输出级别为ERROR -->
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 只打印INFO级别日志 -->
             <level>INFO</level>
+            <!-- 匹配时的操作：接收（记录） -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 不匹配时的操作：拒绝（不记录） -->
+            <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>${LOG_HOME}/info/${app_name}.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/${app_name}.log.%d{yyyy-MM-dd}.log</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
@@ -50,7 +73,7 @@
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>${LOG_HOME}/error/${app_name}.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/${app_name}.log.%d{yyyy-MM-dd}.log</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>

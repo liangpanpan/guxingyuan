@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * liangpanpan   2021/8/7       create this file
  * </pre>
  */
-@Component
+//@Component
 public class SimpleScheduleTask {
 
     public static final Logger logger = LoggerFactory.getLogger(SimpleScheduleTask.class);

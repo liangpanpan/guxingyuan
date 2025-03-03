@@ -18,15 +18,32 @@ spring:
     url: jdbc:mysql://140.143.119.132:3306/guxingyuan?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: lpp@123456
-    # 初始化，最小，最大连接数
-    initialSize: 5
-    minIdle: 5
-    maxActive: 25
-    # 获取数据库连接等待的超时时间
-    maxWait: 60000
-    # 配置多久进行一次检测，检测需要关闭的空闲连接 单位毫秒
-    timeBetweenEvictionRunsMillis: 60000
-    validationQuery: SELECT 1 FROM dual
+    druid:
+      # 初始化，最小，最大连接数
+      initial-size: 5
+      # 最小活跃数
+      min-idle: 5
+      # 线程池最大数
+      max-active: 25
+      # 获取连接时最大等待时间，单位毫秒。配置了maxWait之后，缺省启用公平锁，并发效率会有所下降，如果需要可以通过配置useUnfairLock属性为true使用非公平锁。
+      max-wait: 60000
+      # 有两个含义：
+      # 1) Destroy线程会检测连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接。
+      # 2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明
+      time-between-eviction-runs-millis: 60000
+      # 用来检测连接是否有效的sql，要求是一个查询语句，常用select 'x'。如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会起作用。
+      validationQuery: SELECT 1
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+
+#    initialSize: 5
+#    minIdle: 5
+#    maxActive: 25
+#    # 获取数据库连接等待的超时时间
+#    maxWait: 60000
+#    # 配置多久进行一次检测，检测需要关闭的空闲连接 单位毫秒
+#    timeBetweenEvictionRunsMillis: 60000
+#    validationQuery: SELECT 1 FROM dual
 
   mvc:
     servlet:

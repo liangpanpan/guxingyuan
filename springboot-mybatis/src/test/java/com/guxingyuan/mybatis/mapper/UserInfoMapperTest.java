@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -27,6 +28,10 @@ public class UserInfoMapperTest {
     @Resource
     private UserInfoMapper userInfoMapper;
 
+    @Resource
+    private DataSource dataSource;
+
+
     @Test
     public void searchAllUserInfo() {
         List<UserInfo> userInfoList = userInfoMapper.list();
@@ -34,6 +39,11 @@ public class UserInfoMapperTest {
         for (UserInfo userInfo : userInfoList) {
             log.info(userInfo.toString());
         }
+    }
+
+
+    public void testDataSource() {
+        String string = dataSource.toString();
     }
 
 }

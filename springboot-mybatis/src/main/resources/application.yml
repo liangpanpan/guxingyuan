@@ -35,6 +35,7 @@ spring:
       preferred-json-mapper: gson
 
 mybatis:
+  # 配置上别名后，mapper.xml中的resultType可以直接采用对象类名，不用再添加包名
   type-aliases-package: com.guxingyuan.mybatis.entity
   mapper-locations: classpath:mappers/**.xml
   check-config-location: true
@@ -56,7 +57,19 @@ pagehelper:
   params: count=countSql
 
 logging:
+# 优先顺序 启动脚本指定->yml配置文件指定->resources文件夹中存放logback.xml
 #  config: classpath:logback-${spring.profiles.active}-spring.xml
   level:
     com.guxingyuan.mybatis.mapper: debug
     root: info
+  file:
+    name: /var/log/mybatis/app.log  # 日志文件名称 ，支持相对路径和绝对路径
+  pattern:
+    # 控制台输出格式
+    console: "%magenta(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%yellow(%thread)] %highlight(%-5level) %cyan(%logger{36} [%L] -) %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%L] - %msg%n"  # 文件输出格式
+  logback:
+    rollingPolicy:
+      file-name-pattern: /var/log/mybatis/archived/app.%d{yyyy-MM-dd}.%i.log.gz  # 归档文件名格式
+      max-file-size: 10MB  # 每个日志文件的最大大小
+      max-history: 30     # 保留的归档文件数量

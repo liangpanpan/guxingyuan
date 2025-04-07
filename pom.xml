@@ -21,6 +21,7 @@
         <module>springboot-mq-consumer</module>
         <module>springboot-war</module>
         <module>springboot-login</module>
+        <module>springboot-mongo</module>
         <module>springboot-threadpool</module>
         <module>springboot-solr</module>
         <module>springboot-task</module>

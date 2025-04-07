@@ -1,0 +1,19 @@
+# mongodb数据库配置
+spring:
+  mongodb:
+    clientName: mongo_test # 客户端程序名
+    database: guxingyuan   # 数据库
+    address: 140.143.119.132:27017
+    username: liangpan
+    password: liangpan1986
+    maxSize: 100 # 允许的最大连接数。这些连接在空闲时将保留在池中。一旦池耗尽，任何需要连接的操作都将阻塞等待可用连接 默认: 100
+    minSize: 10 # 最小连接数。这些连接在空闲时将保留在池中，并且池将确保它至少包含这个最小数量 默认: 0
+    maxConnectionLifeTime: 0 # 池连接可以存活的最长时间。零值表示寿命没有限制。超过其生命周期的池连接将被关闭并在必要时由新连接替换
+    maxConnectionIdleTime: 5000 # 池连接的最大空闲时间。零值表示对空闲时间没有限制。超过其空闲时间的池连接将被关闭并在必要时由新连接替换
+    maxWaitTime: 60000 # 默认最大连接时间120s;
+    read-timeout-ms: 60000
+    connection-timeout-ms: 1000
+    heartbeat-frequency: 500
+    min-heartbeat-frequency: 300
+
+

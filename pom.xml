@@ -41,6 +41,7 @@
         <module>socket-receive</module>
         <module>command-test</module>
         <module>springboot-mybatis</module>
+        <module>mybatis-generator</module>
     </modules>
 
     <parent>

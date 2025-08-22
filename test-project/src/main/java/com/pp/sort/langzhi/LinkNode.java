@@ -92,6 +92,7 @@ public class LinkNode<T> {
         }
 
         LinkNode firstRootNode = traverseChild(linkNode, null);
+        System.out.println("=========================");
         traverseParent(linkNode, linkNode.getParentNode(), firstRootNode);
     }
 

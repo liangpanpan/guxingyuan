@@ -42,6 +42,7 @@
         <module>command-test</module>
         <module>springboot-mybatis</module>
         <module>mybatis-generator</module>
+        <module>leetcode</module>
     </modules>
 
     <parent>

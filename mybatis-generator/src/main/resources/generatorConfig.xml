@@ -8,7 +8,11 @@
 
     <!-- MyBatis3Simple风格，还可以使用MyBatis3， targetRuntime=“MyBatis3” -->
     <!-- targetRuntime="MyBatis3Simple" 或 targetRuntime="MyBatis3"-->
-    <context id="simple" targetRuntime="MyBatis3Simple">
+    <context id="Mysql" targetRuntime="MyBatis3Simple">
+
+        <!-- 添加分隔符 -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
 
         <property name="javaFileEncoding" value="UTF-8"/>
 
@@ -47,6 +51,11 @@
             <generatedKey column="id" sqlStatement="MYSQL" identity="true"/>
             <!-- tinyint映射为Integer -->
 <!--            <columnOverride column="role" javaType="Integer" jdbcType="TINYINT"/>-->
+        </table>
+
+        <!-- 还可以配置通配符，表示所有的表 -->
+        <table tableName="%" >
+
         </table>
     </context>
 </generatorConfiguration>

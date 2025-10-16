@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class FlyweightFactory {
     //定义一个池容器
-    private static HashMap<String, Flyweight> pool = new HashMap<>();
+    private static final HashMap<String, Flyweight> pool = new HashMap<>();
 
     //享元工厂
     public static Flyweight getFlyweight(String extrinsic) {

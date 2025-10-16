@@ -61,8 +61,9 @@ public class QuartzHelper {
         JobDetail jobDetail = jobBuilder.build();
 
         SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                .repeatForever()
-                .withMisfireHandlingInstructionFireNow();
+                .repeatForever()   // 指定无限期重复
+//                .withRepeatCount(10) // 重复次数 triggerRepeatCount+1次
+                .withMisfireHandlingInstructionFireNow();  //  如果错过执行时间，立即执行
 
         if (TimeUnit.SECONDS == timeUnit) {
             scheduleBuilder.withIntervalInSeconds(intervalValue);

@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+rocketmq:
+  name-server: 10.1.1.231:8081
+  access-channel: LOCAL
+
+  producer:
+    group: demo-producer-group  # 生产者组名
+    send-message-timeout: 30000  # 发送超时时间(ms)
+#    retry-times-when-send-failed: 2  # 发送失败重试次数
+
+#    access-key: sic
+#    secret-key: 12345qwert
+
+  consumer:
+    group: consumerGroup
+#    access-key: sic
+#    secret-key: 12345qwert
+
+

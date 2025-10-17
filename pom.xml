@@ -44,6 +44,8 @@
         <module>mybatis-generator</module>
         <module>leetcode</module>
         <module>rocketmq-test</module>
+        <module>springboot-rocketmq</module>
+        <module>rocketmq-client-test</module>
     </modules>
 
     <parent>

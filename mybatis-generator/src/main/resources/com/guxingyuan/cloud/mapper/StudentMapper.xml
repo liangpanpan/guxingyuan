@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guxingyuan.cloud.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.guxingyuan.cloud.entity.Student">
+    <id column="s_id" jdbcType="VARCHAR" property="sId" />
+    <result column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="s_birth" jdbcType="VARCHAR" property="sBirth" />
+    <result column="s_sex" jdbcType="VARCHAR" property="sSex" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from student
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guxingyuan.cloud.entity.Student">
+    insert into student (s_id, s_name, s_birth, 
+      s_sex)
+    values (#{sId,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, #{sBirth,jdbcType=VARCHAR}, 
+      #{sSex,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.guxingyuan.cloud.entity.Student">
+    update student
+    set s_name = #{sName,jdbcType=VARCHAR},
+      s_birth = #{sBirth,jdbcType=VARCHAR},
+      s_sex = #{sSex,jdbcType=VARCHAR}
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select s_id, s_name, s_birth, s_sex
+    from student
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select s_id, s_name, s_birth, s_sex
+    from student
+  </select>
+</mapper>

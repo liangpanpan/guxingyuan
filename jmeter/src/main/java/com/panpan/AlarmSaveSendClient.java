@@ -120,7 +120,7 @@ public class AlarmSaveSendClient extends AbstractJavaSamplerClient {
         switch (iocType) {
             case 1 :
         }
-
+        return bo;
     }
 
     private String createDomain() {

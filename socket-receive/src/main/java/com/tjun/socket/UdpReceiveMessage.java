@@ -3,10 +3,13 @@ package com.tjun.socket;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Main {
+public class UdpReceiveMessage {
+
+    private static long totalCount = 0;
     public static void main(String[] args) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -47,8 +50,13 @@ public class Main {
                 InetAddress address = receivePacket.getAddress();
 
                 // 解析接收到的数据
-                String message = new String(receivePacket.getData(), 0, receivePacket.getLength(), "utf-8");
-                System.out.println("时间:" + sdf.format(new Date()) + ", 收到客户端:" + address.getHostAddress() + " 消息:" + message);
+                String message = new String(receivePacket.getData(), 0, receivePacket.getLength(), StandardCharsets.UTF_8);
+                totalCount ++;
+
+                String format = "时间：%s, 收到客户端:%s 计数:%s, 消息:%s";
+
+                System.out.println(String.format(format, sdf.format(new Date()), address.getHostAddress(), totalCount, message));
+//                System.out.println("时间:" + sdf.format(new Date()) + ", 收到客户端:" + address.getHostAddress() + " 消息:" + message);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

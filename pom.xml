@@ -46,6 +46,7 @@
         <module>rocketmq-test</module>
         <module>springboot-rocketmq</module>
         <module>rocketmq-client-test</module>
+        <module>dmdb-test</module>
     </modules>
 
     <parent>

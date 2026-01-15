@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guxingyuan.cloud.mapper.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.guxingyuan.cloud.entity.Article">
+    <id column="article_id" jdbcType="VARCHAR" property="articleId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="synopsis" jdbcType="VARCHAR" property="synopsis" />
+    <result column="image_id" jdbcType="VARCHAR" property="imageId" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="attention_num" jdbcType="LONGVARCHAR" property="attentionNum" />
+    <result column="like_num" jdbcType="LONGVARCHAR" property="likeNum" />
+    <result column="evaluate_num" jdbcType="LONGVARCHAR" property="evaluateNum" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from article
+    where article_id = #{articleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guxingyuan.cloud.entity.Article">
+    insert into article (article_id, title, synopsis, 
+      image_id, publisher, publish_time, 
+      content, attention_num, like_num, 
+      evaluate_num)
+    values (#{articleId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{synopsis,jdbcType=VARCHAR}, 
+      #{imageId,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR}, #{attentionNum,jdbcType=LONGVARCHAR}, #{likeNum,jdbcType=LONGVARCHAR}, 
+      #{evaluateNum,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.guxingyuan.cloud.entity.Article">
+    update article
+    set title = #{title,jdbcType=VARCHAR},
+      synopsis = #{synopsis,jdbcType=VARCHAR},
+      image_id = #{imageId,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR},
+      attention_num = #{attentionNum,jdbcType=LONGVARCHAR},
+      like_num = #{likeNum,jdbcType=LONGVARCHAR},
+      evaluate_num = #{evaluateNum,jdbcType=LONGVARCHAR}
+    where article_id = #{articleId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select article_id, title, synopsis, image_id, publisher, publish_time, content, attention_num, 
+    like_num, evaluate_num
+    from article
+    where article_id = #{articleId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select article_id, title, synopsis, image_id, publisher, publish_time, content, attention_num, 
+    like_num, evaluate_num
+    from article
+  </select>
+</mapper>

@@ -38,7 +38,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.tjun.socket.Main</mainClass>
+                            <mainClass>com.tjun.socket.UdpReceiveMessage</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

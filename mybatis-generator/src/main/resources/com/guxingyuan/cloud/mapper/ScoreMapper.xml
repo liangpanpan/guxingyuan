@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guxingyuan.cloud.mapper.ScoreMapper">
+  <resultMap id="BaseResultMap" type="com.guxingyuan.cloud.entity.Score">
+    <id column="s_id" jdbcType="VARCHAR" property="sId" />
+    <id column="c_id" jdbcType="VARCHAR" property="cId" />
+    <result column="s_score" jdbcType="INTEGER" property="sScore" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from score
+    where s_id = #{sId,jdbcType=VARCHAR}
+      and c_id = #{cId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guxingyuan.cloud.entity.Score">
+    insert into score (s_id, c_id, s_score
+      )
+    values (#{sId,jdbcType=VARCHAR}, #{cId,jdbcType=VARCHAR}, #{sScore,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.guxingyuan.cloud.entity.Score">
+    update score
+    set s_score = #{sScore,jdbcType=INTEGER}
+    where s_id = #{sId,jdbcType=VARCHAR}
+      and c_id = #{cId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select s_id, c_id, s_score
+    from score
+    where s_id = #{sId,jdbcType=VARCHAR}
+      and c_id = #{cId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select s_id, c_id, s_score
+    from score
+  </select>
+</mapper>

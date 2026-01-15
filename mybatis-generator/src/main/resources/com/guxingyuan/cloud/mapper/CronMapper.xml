@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guxingyuan.cloud.mapper.CronMapper">
+  <resultMap id="BaseResultMap" type="com.guxingyuan.cloud.entity.Cron">
+    <id column="cron_id" jdbcType="INTEGER" property="cronId" />
+    <result column="cron" jdbcType="VARCHAR" property="cron" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cron
+    where cron_id = #{cronId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.guxingyuan.cloud.entity.Cron">
+    insert into cron (cron_id, cron)
+    values (#{cronId,jdbcType=INTEGER}, #{cron,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.guxingyuan.cloud.entity.Cron">
+    update cron
+    set cron = #{cron,jdbcType=VARCHAR}
+    where cron_id = #{cronId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select cron_id, cron
+    from cron
+    where cron_id = #{cronId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select cron_id, cron
+    from cron
+  </select>
+</mapper>

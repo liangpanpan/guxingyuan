@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guxingyuan.cloud.mapper.EvaluateMapper">
+  <resultMap id="BaseResultMap" type="com.guxingyuan.cloud.entity.Evaluate">
+    <result column="evaluate_id" jdbcType="VARCHAR" property="evaluateId" />
+    <result column="article_id" jdbcType="VARCHAR" property="articleId" />
+    <result column="evaluater" jdbcType="VARCHAR" property="evaluater" />
+    <result column="evaluate_time" jdbcType="TIMESTAMP" property="evaluateTime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="quote_id" jdbcType="VARCHAR" property="quoteId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.guxingyuan.cloud.entity.Evaluate">
+    insert into evaluate (evaluate_id, article_id, evaluater, 
+      evaluate_time, content, quote_id
+      )
+    values (#{evaluateId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{evaluater,jdbcType=VARCHAR}, 
+      #{evaluateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, #{quoteId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select evaluate_id, article_id, evaluater, evaluate_time, content, quote_id
+    from evaluate
+  </select>
+</mapper>

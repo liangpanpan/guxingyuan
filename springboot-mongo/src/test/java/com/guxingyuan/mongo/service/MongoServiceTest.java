@@ -5,12 +5,15 @@ import com.guxingyuan.mongo.MongoApplication;
 import com.guxingyuan.mongo.entity.ExtInfo;
 import com.guxingyuan.mongo.entity.UserInfo;
 import com.mongodb.client.*;
+import com.mongodb.client.model.BsonField;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.InsertManyResult;
 import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.BsonString;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.junit.jupiter.api.Test;
@@ -69,6 +72,13 @@ public class MongoServiceTest {
         // 删除当前集合
         collection.drop();
         System.out.println("删除当前集合: " + collectionName);
+
+
+        listCollectionNames = mongoDatabase.listCollectionNames();
+        System.out.println("再次查询所有集合列表: ");
+        for (String collectionName1 : listCollectionNames) {
+            System.out.println(collectionName1);
+        }
     }
 
     @Test
@@ -284,8 +294,6 @@ public class MongoServiceTest {
     }
 
 
-
-
     @Test
     public void aggregateDocuments() {
         // 获取集合
@@ -388,6 +396,17 @@ public class MongoServiceTest {
         for (Document doc : aggregateIterable8) {
             System.out.println(doc.toJson());
         }
+
+
+        // 使用 $min 和 $max 返回数组中的第一个和最后一个元素。
+        List<Document> pipeline9 = new ArrayList<>();
+        pipeline9.add(new Document("$group", new Document("_id", "$category").append("min", new Document("$min", "$value")).append("max", new Document("$max", "$value"))));
+        AggregateIterable<Document> aggregateIterable9 = collection.aggregate(pipeline9);
+        System.out.println("使用 $min 和 $max 返回数组中的第一个和最后一个元素:");
+        for (Document doc : aggregateIterable9) {
+            System.out.println(doc.toJson());
+        }
+
     }
 
 

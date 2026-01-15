@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guxingyuan.cloud.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.guxingyuan.cloud.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_Time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="user_role" jdbcType="VARCHAR" property="userRole" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="work_id" jdbcType="VARCHAR" property="workId" />
+    <result column="department" jdbcType="BIGINT" property="department" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.guxingyuan.cloud.entity.User">
+    insert into user (id, user_name, password, 
+      status, create_Time, user_role, 
+      update_time, work_id, department
+      )
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{userRole,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{workId,jdbcType=VARCHAR}, #{department,jdbcType=BIGINT}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.guxingyuan.cloud.entity.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      create_Time = #{createTime,jdbcType=TIMESTAMP},
+      user_role = #{userRole,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      work_id = #{workId,jdbcType=VARCHAR},
+      department = #{department,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_name, password, status, create_Time, user_role, update_time, work_id, 
+    department
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, password, status, create_Time, user_role, update_time, work_id, 
+    department
+    from user
+  </select>
+</mapper>

@@ -2,6 +2,7 @@ package com.pp.list;
 
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * <pre>
@@ -22,6 +23,14 @@ public class TestList {
         person.setName("name");
 
         sonList.getTestList().add(person);
+
+
+        sonList.getTestList().stream().peek(so -> so.setName("111")).collect(Collectors.toList());
+
+
+        sonList.getTestList().forEach(System.out::println);
+
+
 
 
     }

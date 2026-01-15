@@ -1,0 +1,46 @@
+{
+  "response_data": {
+    "is_match": "1",
+    "rule": [
+      {
+        "rule_name": "多家情报",
+        "rule_describe": "多家情报",
+        "id": "871f4eaae88e4a188d531ac7a370e831",
+        "rule_level": "严重"
+      }
+    ],
+    "ioc": "200.58.107.25",
+    "ioc_type": "ip",
+    "intelligence": [
+      {
+        "intel_source_en": "tjym",
+        "intel_source_zh": "天际友盟",
+        "reputs": [
+          {
+            "malicious": "2",
+            "score": 85.0,
+            "ref": "天际友盟",
+            "category": "c2",
+            "timestamp": "20251009015533"
+          }
+        ]
+      },
+      {
+        "intel_source_en": "threatbook",
+        "intel_source_zh": "微步在线",
+        "reputs": [
+          {
+            "ip_scene": "",
+            "malicious": "2",
+            "level": "中",
+            "category": "远控"
+          }
+        ]
+      }
+    ]
+  },
+  "response_status": {
+    "code": 1,
+    "message": "正常"
+  }
+}
